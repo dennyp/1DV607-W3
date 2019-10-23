@@ -24,11 +24,11 @@ namespace BlackJack.view
       return System.Console.In.Read();
     }
 
-    public bool IsPlayGame() => GetInput() == playChar;
-    public bool IsHit() => GetInput() == hitChar;
-    public bool IsStand() => GetInput() == standChar;
-    public bool IsQuit() => GetInput() == quitChar;
-    
+    public int IsPlayGame() => playChar;
+    public int IsHit() => hitChar;
+    public int IsStand() => standChar;
+    public int IsQuit() => quitChar;
+
     public void DisplayCard(model.Card a_card)
     {
       if (a_card.GetColor() == model.Card.Color.Hidden)

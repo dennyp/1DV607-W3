@@ -9,10 +9,10 @@ namespace BlackJack.view
   {
     void DisplayWelcomeMessage();
     int GetInput();
-    bool IsPlayGame();
-    bool IsHit();
-    bool IsStand();
-    bool IsQuit();
+    int IsPlayGame();
+    int IsHit();
+    int IsStand();
+    int IsQuit();
     void DisplayCard(model.Card a_card);
     void DisplayPlayerHand(IEnumerable<model.Card> a_hand, int a_score);
     void DisplayDealerHand(IEnumerable<model.Card> a_hand, int a_score);
