@@ -32,7 +32,7 @@ namespace BlackJack.controller
         a_game.Stand();
       }
 
-      return a_view.IsQuit();
+      return !a_view.IsQuit();
     }
   }
 }
