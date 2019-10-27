@@ -79,10 +79,10 @@ namespace BlackJack.model
           Card c = m_deck.GetCard();
           c.Show(true);
           DealCard(c);
-          return true;
         }
       }
-      return false;
+
+      return true;
     }
   }
 }
