@@ -5,16 +5,16 @@ using System.Text;
 
 namespace BlackJack.model.rules
 {
-    class RulesFactory
+  class RulesFactory
+  {
+    public IHitStrategy GetHitRule()
     {
-        public IHitStrategy GetHitRule()
-        {
-            return new BasicHitStrategy();
-        }
-
-        public INewGameStrategy GetNewGameRule()
-        {
-            return new AmericanNewGameStrategy();
-        }
+      return new Soft17HitStrategy();
     }
+
+    public INewGameStrategy GetNewGameRule()
+    {
+      return new AmericanNewGameStrategy();
+    }
+  }
 }
