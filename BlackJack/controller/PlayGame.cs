@@ -1,40 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using BlackJack.model;
+using BlackJack.model.rules;
+using BlackJack.view;
 
 namespace BlackJack.controller
 {
-  class PlayGame
+  class PlayGame : IObserver
   {
-    public bool Play(model.Game a_game, view.IView a_view)
+    private Game m_game;
+    private IView m_view;
+
+    public PlayGame(Game a_game, IView a_view)
     {
-      a_view.DisplayWelcomeMessage();
+      m_game = a_game;
+      m_view = a_view;
+      m_game.Subscribe(this);
+    }
+    public bool Play()
+    {
+      m_view.DisplayWelcomeMessage();
 
-      a_view.DisplayDealerHand(a_game.GetDealerHand(), a_game.GetDealerScore());
-      a_view.DisplayPlayerHand(a_game.GetPlayerHand(), a_game.GetPlayerScore());
+      m_view.DisplayDealerHand(m_game.GetDealerHand(), m_game.GetDealerScore());
+      m_view.DisplayPlayerHand(m_game.GetPlayerHand(), m_game.GetPlayerScore());
 
-      if (a_game.IsGameOver())
+      if (m_game.IsGameOver())
       {
-        a_view.DisplayGameOver(a_game.IsDealerWinner());
+        m_view.DisplayGameOver(m_game.IsDealerWinner());
       }
 
-      int input = a_view.GetInput();
+      int input = m_view.GetInput();
 
-      if (input == a_view.IsPlayGame())
+      if (input == m_view.IsPlayGame())
       {
-        a_game.NewGame();
+        m_game.NewGame();
       }
-      else if (input == a_view.IsHit())
+      else if (input == m_view.IsHit())
       {
-        a_game.Hit();
+        m_game.Hit();
       }
-      else if (input == a_view.IsStand())
+      else if (input == m_view.IsStand())
       {
-        a_game.Stand();
+        m_game.Stand();
       }
 
-      return input != a_view.IsQuit();
+      return input != m_view.IsQuit();
+    }
+
+    public void Update()
+    {
+      // System.Threading.Thread.Sleep(1500);
+      m_view.DisplayWelcomeMessage();
+
+      m_view.DisplayDealerHand(m_game.GetDealerHand(), m_game.GetDealerScore());
+      m_view.DisplayPlayerHand(m_game.GetPlayerHand(), m_game.GetPlayerScore());
     }
   }
 }

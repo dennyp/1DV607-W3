@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using BlackJack.model.rules;
 
 namespace BlackJack.model
 {
@@ -59,6 +57,12 @@ namespace BlackJack.model
     public int GetPlayerScore()
     {
       return m_player.CalcScore();
+    }
+
+    public void Subscribe(IObserver observer)
+    {
+      m_player.Add(observer);
+      m_dealer.Add(observer);
     }
   }
 }
