@@ -47,7 +47,7 @@ namespace BlackJack.controller
 
     public void Update()
     {
-      // System.Threading.Thread.Sleep(1500);
+      System.Threading.Thread.Sleep(1500);
       m_view.DisplayWelcomeMessage();
 
       m_view.DisplayDealerHand(m_game.GetDealerHand(), m_game.GetDealerScore());
