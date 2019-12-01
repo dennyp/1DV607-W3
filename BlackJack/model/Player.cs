@@ -6,7 +6,7 @@ using BlackJack.model.rules;
 
 namespace BlackJack.model
 {
-  class Player : IObservable
+  class Player
   {
     private List<Card> m_hand = new List<Card>();
     private List<IObserver> m_observers = new List<IObserver>();

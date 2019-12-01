@@ -1,9 +1,0 @@
-namespace BlackJack.model.rules
-{
-  interface IObservable
-  {
-    void Add(IObserver observer);
-    void Remove(IObserver observer);
-    void Notify();
-  }
-}
